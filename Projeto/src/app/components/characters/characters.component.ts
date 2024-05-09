@@ -16,9 +16,12 @@ export class CharactersComponent implements OnInit {
     this.laodCharacters();
   }
   laodCharacters() {
-    this.characterService.getCharacters().subscribe((characters: any) => {
-      console.log(characters);
-      this.characters = characters;
+    this.characterService.getCharacters().subscribe({
+      next: (res : any) => {
+        this.characters = res.results;
+        console.log(res.results);
+      },
+      error:(error) => console.log('Erro no fecth de Personagens: ', error)
     });
   }
 }

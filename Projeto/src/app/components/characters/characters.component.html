@@ -1,1 +1,10 @@
-<p>Characters work</p>
+<div class="container">
+  @for(character of characters; track character.id){
+    <div class="character-card">
+      <div class="character-name">
+        <h3>{{character.name}}</h3>
+      </div>
+      <img class="character-image" src="{{character.image}}" alt="">
+    </div>
+  }
+</div>

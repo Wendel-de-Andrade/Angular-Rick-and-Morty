@@ -1,18 +1,39 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
 .main-container {
   display: flex;
+
   .side-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 70px;
     width: 350px;
     min-width: 230px;
-    min-height: calc(100vh - 70px);
+    min-height: 100vh;
     background-color: #113c60;
     color: #fff;
     box-shadow: 5px 5px 5px #939393;
+
     @media only screen and (max-width: 1300px) {
       width: 170px;
       min-width: 100px;
     }
   }
+
   .main {
-    padding: 30px;
+    width: 100%;
+    padding-top: 100px;
+    padding-left: 350px;
+
+    @media only screen and (max-width: 1300px) {
+      padding-left: 170px;
+    }
   }
 }

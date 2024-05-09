@@ -5,19 +5,24 @@
   color: #fff;
   display: flex;
   justify-content: space-between;
-  box-shadow: 5px 5px 5px #939393;
-  .social i{
+  align-items: center;
+
+  .social i {
     padding-right: 10px;
+
   }
+
   .logo {
     font-weight: bold;
     font-size: 20px;
     cursor: pointer;
   }
+
   .user {
     display: flex;
     align-items: center;
     font-weight: bold;
+
     .user-image {
       width: 50px;
       height: 50px;
