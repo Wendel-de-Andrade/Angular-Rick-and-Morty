@@ -1,8 +1,7 @@
-<div class="nav-items">
-  <div class="nav-item">
-    <span>Episódios</span>
-  </div>
-  <div class="nav-item">
-    <span>Persoangens</span>
-  </div>
-</div>
+<ul>
+  @for (item of items; track items) {
+  <li [routerLink]="item.link">
+    <span>{{item.title}}</span>
+  </li>
+  }
+</ul>

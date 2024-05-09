@@ -1,0 +1,12 @@
+ul{
+  li{
+    padding: 0.5rem 0.5rem 0.5rem 0;
+    margin-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
