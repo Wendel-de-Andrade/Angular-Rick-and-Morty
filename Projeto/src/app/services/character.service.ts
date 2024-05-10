@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { delay } from 'rxjs';
 
 const base_url = 'https://rickandmortyapi.com/api/character'
 @Injectable({
@@ -9,8 +10,12 @@ export class CharacterService {
   private http = inject(HttpClient)
 
   constructor() { }
-  getCharacters() {
-    return this.http.get(base_url);
+  getCharacters(page: number = 1) {
+    return this.http.get(`${base_url}?page=${page}`)
+      // .pipe(
+      //   delay(100000)
+      // )
+      ;
   }
 }
 

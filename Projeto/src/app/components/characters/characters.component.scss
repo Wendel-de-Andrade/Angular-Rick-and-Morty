@@ -18,19 +18,44 @@
   cursor: pointer;
   transition: transform 0.2s ease;
   width: 100%;
+  margin: 20px 0;
+
   &:hover {
     transform: scale(1.05);
   }
+}
+
+.character-image {
+  border-radius: 10px;
+  max-width: 100px;
+  height: auto;
+}
+
+.character-name {
+  flex-grow: 1;
+  text-align: left;
+  margin-left: 20px;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
   }
 
-  .character-image {
-    border-radius: 10px;
-    max-width: 100px;
-    height: auto;
+  to {
+    transform: rotate(360deg);
   }
+}
 
-  .character-name {
-    flex-grow: 1;
-    text-align: left;
-    margin-left: 20px;
-  }
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.fa-circle-notch {
+  font-size: 2em;
+  color: #555;
+  animation: spin 2s linear infinite;
+}
