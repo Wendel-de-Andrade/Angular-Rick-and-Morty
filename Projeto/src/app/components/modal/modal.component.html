@@ -1,0 +1,12 @@
+<div class="modal" *ngIf="isVisible">
+  <div class="modal-content">
+    <span class="close-button" (click)="closeModal()">&times;</span>
+    <h2>{{ character.name }}</h2>
+    <img [src]="character.image" alt="{{ character.name }}">
+    <p>Status: {{ character.status }}</p>
+    <p>Species: {{ character.species }}</p>
+    <p>Gender: {{ character.gender }}</p>
+    <p>Origin: {{ character.origin.name }}</p>
+    <p>Location: {{ character.location.name }}</p>
+  </div>
+</div>

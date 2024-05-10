@@ -1,5 +1,5 @@
 <div class="container">
-  <div *ngFor="let character of characters; trackBy: trackById">
+  <div *ngFor="let character of characters; trackBy: trackById" (click)="openModal(character)">
     <app-card>
       <img class="character-image" [src]="character.image" alt="{{ character.name }}">
       <div class="character-details">
@@ -8,6 +8,8 @@
       </div>
     </app-card>
   </div>
+  <app-modal [character]="selectedCharacter" [isVisible]="isModalOpen"
+    (close)="closeModal()"></app-modal>
   <div *ngIf="isLoading" class="loading-indicator">
     <i class="fa-solid fa-circle-notch"></i>
   </div>

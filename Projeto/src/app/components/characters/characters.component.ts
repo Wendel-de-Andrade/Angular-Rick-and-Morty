@@ -2,11 +2,12 @@ import { Component, OnInit, HostListener, inject } from '@angular/core';
 import { CharacterService } from '../../services/character.service';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from '../card/card.component';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-characters',
   standalone: true,
-  imports: [CommonModule, CardComponent],
+  imports: [CommonModule, CardComponent, ModalComponent],
   templateUrl: './characters.component.html',
   styleUrl: './characters.component.scss'
 })
@@ -57,6 +58,18 @@ export class CharactersComponent implements OnInit {
       this.currentPage++;
       this.loadCharacters(this.currentPage);
     }
+  }
+
+  selectedCharacter: any;
+  isModalOpen = false;
+
+  openModal(character: any): void {
+    this.selectedCharacter = character;
+    this.isModalOpen = true;
+  }
+
+  closeModal(): void {
+    this.isModalOpen = false;
   }
 
   trackById(index: number, character: any): number {
