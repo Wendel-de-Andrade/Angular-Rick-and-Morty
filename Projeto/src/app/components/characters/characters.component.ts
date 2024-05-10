@@ -1,11 +1,12 @@
 import { Component, OnInit, HostListener, inject } from '@angular/core';
 import { CharacterService } from '../../services/character.service';
 import { CommonModule } from '@angular/common';
+import { CardComponent } from '../card/card.component';
 
 @Component({
   selector: 'app-characters',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CardComponent],
   templateUrl: './characters.component.html',
   styleUrl: './characters.component.scss'
 })
@@ -56,6 +57,10 @@ export class CharactersComponent implements OnInit {
       this.currentPage++;
       this.loadCharacters(this.currentPage);
     }
+  }
+
+  trackById(index: number, character: any): number {
+    return character.id;
   }
 
 }

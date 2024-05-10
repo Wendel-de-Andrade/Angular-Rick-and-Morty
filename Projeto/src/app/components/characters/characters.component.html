@@ -1,13 +1,13 @@
 <div class="container">
-  @for(character of characters; track character.id){
-  <div class="character-card">
-    <div class="character-name">
-      <h3>{{ character.name }}</h3>
-      <h3>{{ character.episode.length }}</h3>
-    </div>
-    <img class="character-image" src="{{ character.image }}" alt="">
+  <div *ngFor="let character of characters; trackBy: trackById">
+    <app-card>
+      <img class="character-image" [src]="character.image" alt="{{ character.name }}">
+      <div class="character-details">
+        <h3>{{ character.name }}</h3>
+        <p>Episódios: {{ character.episode.length }}</p>
+      </div>
+    </app-card>
   </div>
-  }
   <div *ngIf="isLoading" class="loading-indicator">
     <i class="fa-solid fa-circle-notch"></i>
   </div>
