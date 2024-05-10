@@ -11,6 +11,6 @@ import { RouterLink } from '@angular/router';
 export class SideBarComponent {
   items: {title: string; link: string} [] = [
     {title: 'Episódios', link: 'episodios'},
-    {title: 'Persoangens', link: 'personagens'},
+    {title: 'Personagens', link: 'personagens'},
   ]
 }
