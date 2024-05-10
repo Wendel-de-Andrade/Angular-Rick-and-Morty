@@ -1,6 +1,5 @@
-import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter, Renderer2, Inject, OnChanges, SimpleChanges } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-modal',
@@ -10,7 +9,6 @@ import { DOCUMENT } from '@angular/common';
   styleUrl: './modal.component.scss'
 })
 export class ModalComponent implements OnChanges {
-  @Input() character: any;
   @Input() isVisible: boolean = false;
   @Output() close = new EventEmitter<void>();
 

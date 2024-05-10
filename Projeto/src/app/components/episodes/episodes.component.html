@@ -1,5 +1,5 @@
 <div class="container">
-  <div *ngFor="let episode of episodes; trackBy: trackById">
+  <div *ngFor="let episode of episodes; trackBy: trackById" (click)="openModal(episode)">
     <app-card>
       <div class="episode-details">
         <h3>{{ episode.name }}</h3>
@@ -7,6 +7,10 @@
       </div>
     </app-card>
   </div>
+  <app-modal [isVisible]="isModalOpen" (close)="closeModal()">
+    <h2>{{ selectedEpisode?.name }}</h2>
+    <p>Temporada: {{ selectedEpisode?.episode }}</p>
+  </app-modal>
   <div *ngIf="isLoading" class="loading-indicator">
     <i class="fa-solid fa-circle-notch"></i>
   </div>

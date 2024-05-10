@@ -17,6 +17,8 @@ export class CharactersComponent implements OnInit {
   currentPage = 1;
   isLoading = false;
   totalCharacters = 1;
+  selectedCharacter: any;
+  isModalOpen = false;
 
   ngOnInit(): void {
     this.loadCharacters(this.currentPage);
@@ -60,14 +62,10 @@ export class CharactersComponent implements OnInit {
     }
   }
 
-  selectedCharacter: any;
-  isModalOpen = false;
-
-  openModal(character: any): void {
-    this.selectedCharacter = character;
+  openModal(episode: any): void {
+    this.selectedCharacter = episode;
     this.isModalOpen = true;
   }
-
   closeModal(): void {
     this.isModalOpen = false;
   }

@@ -2,11 +2,12 @@ import { Component, OnInit, HostListener, inject } from '@angular/core';
 import { CardComponent } from '../card/card.component';
 import { EpisodeService } from '../../services/episode.service';
 import { CommonModule } from '@angular/common';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-episodes',
   standalone: true,
-  imports: [CommonModule ,CardComponent],
+  imports: [CommonModule, CardComponent, ModalComponent],
   templateUrl: './episodes.component.html',
   styleUrl: './episodes.component.scss'
 })
@@ -16,6 +17,8 @@ export class EpisodesComponent implements OnInit {
   currentPage = 1;
   isLoading = false;
   totalEpisodes = 1;
+  selectedEpisode: any;
+  isModalOpen = false;
 
   ngOnInit(): void {
     this.loadEpisodes(this.currentPage);
@@ -43,10 +46,10 @@ export class EpisodesComponent implements OnInit {
         this.episodes = this.episodes.concat(res.results);
         this.totalEpisodes = res.info.count;
         this.isLoading = false;
-        console.log('Personagens carregados:', res.results);
+        console.log('Episódios carregados:', res.results);
       },
       error: (error) => {
-        console.log('Erro no fecth dos personagens:', error);
+        console.log('Erro no fecth dos episódios:', error);
         this.isLoading = false;
       }
     });
@@ -58,6 +61,16 @@ export class EpisodesComponent implements OnInit {
       this.loadEpisodes(this.currentPage);
     }
   }
+
+  openModal(episode: any): void {
+    this.selectedEpisode = episode;
+    this.isModalOpen = true;
+  }
+
+  closeModal(): void {
+    this.isModalOpen = false;
+  }
+
 
   trackById(index: number, episode: any): number {
     return episode.id;

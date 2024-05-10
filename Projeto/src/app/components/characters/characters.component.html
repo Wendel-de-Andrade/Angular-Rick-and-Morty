@@ -8,8 +8,15 @@
       </div>
     </app-card>
   </div>
-  <app-modal [character]="selectedCharacter" [isVisible]="isModalOpen"
-    (close)="closeModal()"></app-modal>
+  <app-modal [isVisible]="isModalOpen" (close)="closeModal()">
+    <h2>{{ selectedCharacter?.name }}</h2>
+    <img [src]="selectedCharacter?.image" alt="{{ selectedCharacter?.name }}">
+    <p>Status: {{ selectedCharacter?.status }}</p>
+    <p>Species: {{ selectedCharacter?.species }}</p>
+    <p>Gender: {{ selectedCharacter?.gender }}</p>
+    <p>Origin: {{ selectedCharacter?.origin.name }}</p>
+    <p>Location: {{ selectedCharacter?.location.name }}</p>
+  </app-modal>
   <div *ngIf="isLoading" class="loading-indicator">
     <i class="fa-solid fa-circle-notch"></i>
   </div>
