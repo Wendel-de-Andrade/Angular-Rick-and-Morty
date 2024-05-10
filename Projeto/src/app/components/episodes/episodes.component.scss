@@ -1,0 +1,27 @@
+.episode-details {
+  flex-grow: 1;
+  text-align: center;
+
+  h3{
+    font-size: 40px;
+  }
+
+  p{
+    padding-top: 20px;
+    font-size: 20px;
+  }
+}
+
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+.fa-circle-notch {
+  font-size: 2em;
+  color: #555;
+  animation: spin 2s linear infinite;
+}
+

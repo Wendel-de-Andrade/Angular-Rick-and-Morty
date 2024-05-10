@@ -1,1 +1,13 @@
-<p>episodes works!</p>
+<div class="container">
+  <div *ngFor="let episode of episodes; trackBy: trackById">
+    <app-card>
+      <div class="episode-details">
+        <h3>{{ episode.name }}</h3>
+        <p>Temporada: {{ episode.episode }}</p>
+      </div>
+    </app-card>
+  </div>
+  <div *ngIf="isLoading" class="loading-indicator">
+    <i class="fa-solid fa-circle-notch"></i>
+  </div>
+</div>
