@@ -3,6 +3,8 @@ import { CardComponent } from '../card/card.component';
 import { EpisodeService } from '../../services/episode.service';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from '../modal/modal.component';
+import { FilterService } from '../../services/filter.service';
+import { Episode } from '../../models/episode-model';
 
 @Component({
   selector: 'app-episodes',
@@ -13,15 +15,22 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class EpisodesComponent implements OnInit {
   private episodeService = inject(EpisodeService);
+  private filterService = inject(FilterService);
   episodes: any[] = [];
   currentPage = 1;
   isLoading = false;
   totalEpisodes = 1;
+  totalPages = 0;
   selectedEpisode: any;
   isModalOpen = false;
+  currentFilter: string = '';
 
   ngOnInit(): void {
-    this.loadEpisodes(this.currentPage);
+    this.filterService.filter$.subscribe(filter => {
+      this.currentFilter = filter;
+      this.episodes = [];
+      this.loadEpisodes(1);
+    });
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -35,28 +44,25 @@ export class EpisodesComponent implements OnInit {
     }
   }
 
-  loadEpisodes(page: number): void {
-    if (this.episodes.length >= this.totalEpisodes) {
-      return;
-    }
-
+  loadEpisodes(page: number, filter: string = this.currentFilter): void {
     this.isLoading = true;
     this.episodeService.getEpisodes(page).subscribe({
       next: (res: any) => {
-        this.episodes = this.episodes.concat(res.results);
+        const filteredResults = this.filterService.filterData(res.results, this.currentFilter);
+        this.episodes = this.episodes.concat(filteredResults);
         this.totalEpisodes = res.info.count;
+        this.totalPages = res.info.pages;
         this.isLoading = false;
-        console.log('Episódios carregados:', res.results);
       },
       error: (error) => {
-        console.log('Erro no fecth dos episódios:', error);
+        console.error('Erro ao carregar os episódios:', error);
         this.isLoading = false;
       }
     });
   }
 
   loadMore(): void {
-    if (!this.isLoading) {
+    if (!this.isLoading && this.currentPage < this.totalPages) {
       this.currentPage++;
       this.loadEpisodes(this.currentPage);
     }

@@ -4,6 +4,8 @@
     <i class="fa-brands fa-github"></i>
   </div>
   <div class="logo" [routerLink]="['/']">Logo</div>
+  <input *ngIf="showSearch" [(ngModel)]="searchTerm" (ngModelChange)="updateFilter()"
+    placeholder="Pesquise o personagem">
   <div class="user">
     <div class="user-name">Usuário</div>
     <div class="user-image">US</div>

@@ -3,6 +3,8 @@ import { CharacterService } from '../../services/character.service';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from '../card/card.component';
 import { ModalComponent } from '../modal/modal.component';
+import { FilterService } from '../../services/filter.service';
+import { Character } from '../../models/character-model';
 
 @Component({
   selector: 'app-characters',
@@ -13,15 +15,22 @@ import { ModalComponent } from '../modal/modal.component';
 })
 export class CharactersComponent implements OnInit {
   private characterService = inject(CharacterService);
+  private filterService = inject(FilterService);
   characters: any[] = [];
   currentPage = 1;
   isLoading = false;
   totalCharacters = 1;
+  totalPages = 0;
   selectedCharacter: any;
   isModalOpen = false;
+  currentFilter: string = '';
 
   ngOnInit(): void {
-    this.loadCharacters(this.currentPage);
+    this.filterService.filter$.subscribe(filter => {
+      this.currentFilter = filter;
+      this.characters = [];
+      this.loadCharacters(1);
+    });
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -36,27 +45,24 @@ export class CharactersComponent implements OnInit {
   }
 
   loadCharacters(page: number): void {
-    if (this.characters.length >= this.totalCharacters) {
-      return;
-    }
-
     this.isLoading = true;
     this.characterService.getCharacters(page).subscribe({
       next: (res: any) => {
-        this.characters = this.characters.concat(res.results);
+        const filteredResults = this.filterService.filterData(res.results, this.currentFilter);
+        this.characters = this.characters.concat(filteredResults);
         this.totalCharacters = res.info.count;
+        this.totalPages = res.info.pages;
         this.isLoading = false;
-        console.log('Personagens carregados:', res.results);
       },
       error: (error) => {
-        console.log('Erro no fecth dos personagens:', error);
+        console.error('Erro ao carregar os personagens:', error);
         this.isLoading = false;
       }
     });
   }
 
   loadMore(): void {
-    if (!this.isLoading) {
+    if (!this.isLoading && this.currentPage < this.totalPages) {
       this.currentPage++;
       this.loadCharacters(this.currentPage);
     }
