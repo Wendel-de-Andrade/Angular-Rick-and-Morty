@@ -1,0 +1,73 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f8f8f9;
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  .back-button {
+    position: absolute;
+    top: 80px;
+    left: 180px;
+    background-color: transparent;
+    border: none;
+    color: #4b3f6b;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none; // Adicionado para remover o sublinhado de links
+
+    &:hover {
+      color: darken(#4b3f6b, 10%);
+    }
+  }
+
+  form {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 350px;
+    box-sizing: border-box;
+
+    input[type="email"],
+    input[type="password"],
+    input[type="text"],
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    img {
+      width: 100px; // Tamanho ajustável conforme necessário
+      height: auto;
+      margin-top: 10px;
+      border-radius: 50%; // Estilo circular, se preferir
+      border: 2px solid #ccc;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 5px;
+      color: #ffffff;
+      background-color: #4b3f6b;
+      cursor: pointer;
+      font-size: 16px;
+
+      &:hover {
+        background-color: darken(#4b3f6b, 10%);
+      }
+    }
+  }
+}

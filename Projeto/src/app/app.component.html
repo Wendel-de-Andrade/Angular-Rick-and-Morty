@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="showLayout" class="container">
   <div class="header">
     <app-header></app-header>
   </div>
@@ -6,8 +6,11 @@
     <div class="side-bar">
       <app-side-bar></app-side-bar>
     </div>
-    <div class="main">
-      <router-outlet />
+    <div class="main" [class.no-padding-top]="isProfileActive">
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
+
+<!-- Este router-outlet é para as páginas que devem ocupar a tela inteira como a página de login -->
+<router-outlet *ngIf="!showLayout"></router-outlet>

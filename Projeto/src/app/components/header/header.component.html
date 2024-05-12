@@ -6,8 +6,20 @@
   <div class="logo" [routerLink]="['/']">Logo</div>
   <input *ngIf="showSearch" [(ngModel)]="searchTerm" (ngModelChange)="updateFilter()"
     placeholder="Pesquise o personagem">
-  <div class="user">
-    <div class="user-name">Usuário</div>
-    <div class="user-image">US</div>
+  <div class="user-menu-wrapper">
+    <div class="user">
+      <div class="user-name">{{ user ? user.name : 'Usuário' }}</div>
+      <div class="user-image" (click)="toggleUserMenu()">
+        <i *ngIf="!user?.image" class="fa-solid fa-user"></i>
+        <img *ngIf="user?.image" [src]="user.image" alt="{{ user.name }}">
+      </div>
+    </div>
+    <div *ngIf="showUserMenu" class="user-menu">
+      <ul>
+        <li *ngIf="user" [routerLink]="['/perfil']" (click)="closeUserMenu()">Perfil</li>
+        <li *ngIf="user" (click)="logout(); closeUserMenu()">Sair</li>
+        <li *ngIf="!user" [routerLink]="['/login']" (click)="closeUserMenu()">Login</li>
+      </ul>
+    </div>
   </div>
 </div>

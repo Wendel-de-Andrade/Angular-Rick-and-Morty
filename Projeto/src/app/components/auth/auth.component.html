@@ -1,0 +1,23 @@
+<div class="auth-container">
+  <button class="back-button" (click)="goHome()">← Voltar</button>
+  <div *ngIf="showLogin">
+    <!-- Formulário de Login -->
+    <form (ngSubmit)="onLogin()">
+      <input type="email" [(ngModel)]="loginEmail" name="email" placeholder="Email" required>
+      <input type="password" [(ngModel)]="loginPassword" name="password" placeholder="Senha" required>
+      <button type="submit">Login</button>
+      <button type="button" (click)="showLogin = false">Registrar</button>
+    </form>
+  </div>
+  <div *ngIf="!showLogin">
+    <!-- Formulário de Registro -->
+    <form (ngSubmit)="onRegister()">
+      <input type="text" [(ngModel)]="registerName" name="name" placeholder="Nome" required>
+      <input type="email" [(ngModel)]="registerEmail" name="email" placeholder="Email" required>
+      <input type="password" [(ngModel)]="registerPassword" name="password" placeholder="Senha" required>
+      <input type="file" (change)="onFileSelected($event)">
+      <button type="submit">Registrar</button>
+      <button type="button" (click)="showLogin = true">Login</button>
+    </form>
+  </div>
+</div>
