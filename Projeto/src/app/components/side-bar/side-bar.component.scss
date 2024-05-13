@@ -1,12 +1,20 @@
-ul{
-  li{
-    padding: 0.5rem 0.5rem 0.5rem 0;
-    margin-bottom: 0.5rem;
+@import "../../../styles/variables.scss";
+
+ul {
+  padding: 0;
+  list-style-type: none;
+  li {
+    font-weight: bold;
+    padding: 0.5rem 1rem;
     display: flex;
-    flex-direction: column;
-    gap: 8px;
-    &:hover {
+    align-items: center;
+    justify-content: center;
+    transition: all ease 0.2s;
+
+    &:hover, &.active {
       cursor: pointer;
+      background-color: $bg-color;
+      color: $primary-color;
     }
   }
 }

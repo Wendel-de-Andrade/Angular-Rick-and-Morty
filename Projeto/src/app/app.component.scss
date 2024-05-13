@@ -1,3 +1,5 @@
+@import "../styles/variables.scss";
+
 .container {
   display: grid;
   grid-template-columns: 350px 1fr;
@@ -21,9 +23,9 @@
   top: 70px;
   width: 350px;
   height: calc(100vh - 70px);
-  background-color: #113c60;
+  background-color: $secondary-color;
   color: #fff;
-  box-shadow: 5px 5px 5px #939393;
+  box-shadow: 5px 0px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 .main {
@@ -38,16 +40,16 @@
   padding-top: 0 !important; // Remove o padding-top quando for o perfil
 }
 
-@media only screen and (max-width: 1300px) {
-  .container {
-    grid-template-columns: 170px 1fr;
-  }
+// @media only screen and (max-width: 1300px) {
+//   .container {
+//     grid-template-columns: 170px 1fr;
+//   }
 
-  .side-bar {
-    width: 170px;
-  }
+//   .side-bar {
+//     width: 170px;
+//   }
 
-  .main {
-    padding-Left: 170px;
-  }
-}
+//   .main {
+//     padding-Left: 170px;
+//   }
+// }
