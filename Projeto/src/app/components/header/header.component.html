@@ -1,19 +1,33 @@
 <div class="header">
+
   <div class="social">
-    <i class="fa-brands fa-linkedin-in"></i>
-    <i class="fa-brands fa-github"></i>
+    <a href="https://www.linkedin.com/in/wendel-de-andrade-b51a181a4/" target="_blank">
+      <i class="fa-brands fa-linkedin-in"></i>
+    </a>
+    <a href="https://github.com/Wendel-de-Andrade" target="_blank">
+      <i class="fa-brands fa-github"></i>
+    </a>
   </div>
-  <div class="logo" [routerLink]="['/']">Logo</div>
+
+  <div [ngClass]="{'logo': true, 'centered': !showSearch}" [routerLink]="['/']">
+    <img src="assets/svg/logo.svg" alt="Logo">
+  </div>
+
   <input *ngIf="showSearch" [(ngModel)]="searchTerm" (ngModelChange)="updateFilter()"
-    placeholder="Pesquise o personagem">
-  <div class="user-menu-wrapper">
+    placeholder="Pesquise o personagem" class="search-bar">
+
+
+  <div [ngClass]="{'user-menu-wrapper': true, 'flex-zero': !showSearch}">
+
     <div class="user">
-      <div class="user-name">{{ user ? user.name : 'Usuário' }}</div>
+
       <div class="user-image" (click)="toggleUserMenu()">
         <i *ngIf="!user?.image" class="fa-solid fa-user"></i>
         <img *ngIf="user?.image" [src]="user.image" alt="{{ user.name }}">
       </div>
+
     </div>
+
     <div *ngIf="showUserMenu" class="user-menu">
       <ul>
         <li *ngIf="user" [routerLink]="['/perfil']" (click)="closeUserMenu()">Perfil</li>
@@ -21,5 +35,7 @@
         <li *ngIf="!user" [routerLink]="['/login']" (click)="closeUserMenu()">Login</li>
       </ul>
     </div>
+
   </div>
+
 </div>
