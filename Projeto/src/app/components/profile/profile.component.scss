@@ -1,29 +1,15 @@
+@import "../../../styles/variables.scss";
+
 .profile-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f8f8f9;
+  background-color: $bg-color;
 
   h1 {
     margin-bottom: 10px;
-  }
-
-  .back-button {
-    position: absolute;
-    top: 80px;
-    left: 180px;
-    background-color: transparent;
-    border: none;
-    color: #4b3f6b;
-    font-size: 16px;
-    cursor: pointer;
-    text-decoration: none; // Adicionado para remover o sublinhado de links
-
-    &:hover {
-      color: darken(#4b3f6b, 10%);
-    }
   }
 
   form {
@@ -36,9 +22,7 @@
     box-sizing: border-box;
 
     input[type="email"],
-    input[type="password"],
-    input[type="text"],
-    input[type="file"] {
+    input[type="text"] {
       width: 100%;
       padding: 10px;
       margin: 10px 0;
@@ -47,27 +31,12 @@
     }
 
     img {
-      width: 100px; // Tamanho ajustável conforme necessário
+      width: 100px;
       height: auto;
-      margin-top: 10px;
-      border-radius: 50%; // Estilo circular, se preferir
+      margin: 10px auto;
+      border-radius: 50%;
       border: 2px solid #ccc;
-    }
-
-    button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border: none;
-      border-radius: 5px;
-      color: #ffffff;
-      background-color: #4b3f6b;
-      cursor: pointer;
-      font-size: 16px;
-
-      &:hover {
-        background-color: darken(#4b3f6b, 10%);
-      }
+      display: block;
     }
   }
 }

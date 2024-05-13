@@ -27,8 +27,4 @@ export class ProfileComponent {
     this.editedEmail = this.user.email;
     this.imagePreview = this.user.image;
   }
-
-  goBack() {
-    this.location.back();
-  }
 }

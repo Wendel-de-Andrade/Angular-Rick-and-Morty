@@ -1,15 +1,12 @@
 <div class="profile-container">
-  <!-- Botão de voltar utilizando routerLink -->
-  <a (click)="goBack()" class="back-button">← Voltar</a>
-  <h1>Editar Perfil</h1>
+  <h1>Meu Perfil</h1>
   <form>
     <img *ngIf="imagePreview" [src]="imagePreview" alt="Preview">
 
     <label for="name">Nome:</label>
-    <input type="text" [(ngModel)]="editedName" name="name">
+    <input type="text" [(ngModel)]="editedName" name="name" readonly>
 
     <label for="email">Email:</label>
     <input type="email" [(ngModel)]="editedEmail" name="email" readonly>
-
   </form>
 </div>
