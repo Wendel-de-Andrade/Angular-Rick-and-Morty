@@ -1,23 +1,53 @@
-.character-image {
+.image {
   border-radius: 10px;
   height: 80%;
-  margin-left: 5%;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.4);
+}
+
+.character-image {
+  margin-left: 5%;
 }
 
 .character-details {
   flex-grow: 1;
   text-align: center;
 
-  h3{
+  h3 {
     font-size: 30px;
   }
 
-  p{
+  p {
     padding-top: 20px;
     font-size: 20px;
   }
 }
+
+.modal-content {
+  display: flex;
+  align-items: center; // Alinha verticalmente
+  justify-content: space-between; // Espaço entre a imagem e o texto
+  padding: 20px; // Adiciona um pouco de espaço ao redor para uma melhor visualização
+
+  .modal-image {
+    width: 40%; // Ajuste conforme necessário
+    height: auto; // Mantém a proporção da imagem
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+  }
+
+  .modal-text {
+    width: 50%; // Ajuste conforme necessário
+    padding-left: 20px; // Espaço entre a imagem e o texto
+
+    h2,
+    p {
+      margin: 0 0 10px 0; // Remove a margem padrão do topo e adiciona espaço entre os elementos
+    }
+  }
+}
+
+
+
 
 @keyframes spin {
   from {

@@ -3,13 +3,14 @@
     <app-card (cardClick)="openModal(episode)">
       <div class="episode-details">
         <h3>{{ episode.name }}</h3>
-        <p>Temporada: {{ episode.episode }}</p>
+        <p>Temporada: {{ episode.season }} </p>
+        <p>Episódio: {{ episode.episodeNumber }}</p>
       </div>
     </app-card>
   </div>
   <app-modal [isVisible]="isModalOpen" (close)="closeModal()">
     <h2>{{ selectedEpisode?.name }}</h2>
-    <p>Temporada: {{ selectedEpisode?.episode }}</p>
+    <p>Data de Estreia: {{ selectedEpisode?.air_date }}</p>
   </app-modal>
   <div *ngIf="isLoading" class="loading-indicator">
     <i class="fa-solid fa-circle-notch"></i>

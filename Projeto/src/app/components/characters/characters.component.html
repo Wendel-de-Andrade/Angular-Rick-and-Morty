@@ -1,7 +1,7 @@
 <div class="container">
   <div *ngFor="let character of characters; trackBy: trackById">
     <app-card (cardClick)="openModal(character)">
-      <img class="character-image" [src]="character.image" alt="{{ character.name }}">
+      <img class="image character-image" [src]="character.image" alt="{{ character.name }}">
       <div class="character-details">
         <h3>{{ character.name }}</h3>
         <p>Episódios: {{ character.episode.length }}</p>
@@ -9,13 +9,17 @@
     </app-card>
   </div>
   <app-modal [isVisible]="isModalOpen" (close)="closeModal()">
-    <h2>{{ selectedCharacter?.name }}</h2>
-    <img [src]="selectedCharacter?.image" alt="{{ selectedCharacter?.name }}">
-    <p>Status: {{ selectedCharacter?.status }}</p>
-    <p>Species: {{ selectedCharacter?.species }}</p>
-    <p>Gender: {{ selectedCharacter?.gender }}</p>
-    <p>Origin: {{ selectedCharacter?.origin.name }}</p>
-    <p>Location: {{ selectedCharacter?.location.name }}</p>
+    <div class="modal-content">
+      <img class="image modal-image" [src]="selectedCharacter?.image" alt="{{ selectedCharacter?.name }}">
+      <div class="modal-text">
+        <h2>{{ selectedCharacter?.name }}</h2>
+        <p>Status: {{ selectedCharacter?.status }}</p>
+        <p>Espécie: {{ selectedCharacter?.species }}</p>
+        <p>Gênero: {{ selectedCharacter?.gender }}</p>
+        <p>Origen: {{ selectedCharacter?.origin.name }}</p>
+        <p>Localidade: {{ selectedCharacter?.location.name }}</p>
+      </div>
+    </div>
   </app-modal>
   <div *ngIf="isLoading" class="loading-indicator">
     <i class="fa-solid fa-circle-notch"></i>

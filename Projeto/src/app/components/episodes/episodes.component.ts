@@ -48,7 +48,12 @@ export class EpisodesComponent implements OnInit {
     this.isLoading = true;
     this.episodeService.getEpisodes(page).subscribe({
       next: (res: any) => {
-        const filteredResults = this.filterService.filterData(res.results, this.currentFilter);
+        const episodesWithDetails = res.results.map((ep: any) => ({
+          ...ep,
+          season: ep.episode.split('E')[0].replace('S', ''),
+          episodeNumber: ep.episode.split('E')[1]
+        }));
+        const filteredResults = this.filterService.filterData(episodesWithDetails, filter);
         this.episodes = this.episodes.concat(filteredResults);
         this.totalEpisodes = res.info.count;
         this.totalPages = res.info.pages;
