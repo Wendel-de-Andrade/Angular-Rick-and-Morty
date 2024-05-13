@@ -24,30 +24,27 @@
 
 .modal-content {
   display: flex;
-  align-items: center; // Alinha verticalmente
-  justify-content: space-between; // Espaço entre a imagem e o texto
-  padding: 20px; // Adiciona um pouco de espaço ao redor para uma melhor visualização
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
 
   .modal-image {
-    width: 40%; // Ajuste conforme necessário
-    height: auto; // Mantém a proporção da imagem
+    width: 40%;
+    height: auto;
     border-radius: 10px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
   }
 
   .modal-text {
-    width: 50%; // Ajuste conforme necessário
-    padding-left: 20px; // Espaço entre a imagem e o texto
+    width: 50%;
+    padding-left: 20px;
 
     h2,
     p {
-      margin: 0 0 10px 0; // Remove a margem padrão do topo e adiciona espaço entre os elementos
+      margin: 0 0 10px 0;
     }
   }
 }
-
-
-
 
 @keyframes spin {
   from {
@@ -70,4 +67,46 @@
   font-size: 2em;
   color: #555;
   animation: spin 2s linear infinite;
+}
+
+@media (max-width: 767px) {
+
+  // Aqui para baixo é o modal que já está funcionando
+  .modal-content {
+    display: block;
+
+    .modal-image {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .modal-text {
+      width: 100%;
+      padding-left: 0 20px;
+
+      h2,
+      p {
+        margin: 0 0 10px 0;
+      }
+    }
+  }
+
+  .container>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .image {
+      margin-left: 0;
+      margin-bottom: 15px;
+      height: 80%;
+      order: -1;
+    }
+
+    .character-details {
+      text-align: center;
+      order: 1;
+    }
+  }
+
 }

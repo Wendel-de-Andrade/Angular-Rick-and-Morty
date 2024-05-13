@@ -23,3 +23,18 @@
       box-shadow: 0 0 15px 5px rgba($primary-color, 0.5);
     }
 }
+
+@media (max-width: 1024px) {
+  .card {
+    width: 80%;
+  }
+}
+
+@media (max-width: 767px) {
+  .card {
+    display: block;
+    height: auto;
+    width: auto;
+    justify-content: center;
+  }
+}

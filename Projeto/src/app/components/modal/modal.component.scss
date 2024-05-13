@@ -26,3 +26,9 @@
   font-size: 28px;
   cursor: pointer;
 }
+
+@media (max-width: 767px) {
+  .modal-content {
+    width: 80%;
+  }
+}

@@ -17,13 +17,18 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   title = 'Projeto';
   showLayout = true;
-  isProfileActive = false; // Nova propriedade para controle do estilo
+  isProfileActive = false;
+  sidebarOpen: boolean = false
+
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
+  }
 
   constructor(private router: Router) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.showLayout = !['/login'].includes(event.url);
-        this.isProfileActive = event.url === '/perfil'; // Ajuste para a URL de perfil
+        this.isProfileActive = event.url === '/perfil';
       }
     });
   }

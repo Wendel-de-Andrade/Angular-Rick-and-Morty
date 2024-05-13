@@ -31,7 +31,7 @@
     cursor: pointer;
 
     img {
-      height: 50px; // Ajuste conforme o tamanho desejado
+      height: 50px;
     }
   }
 
@@ -129,5 +129,21 @@
         }
       }
     }
+  }
+}
+
+@media (max-width: 1024px) {
+  .logo img {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .social i {
+    display: none;
+  }
+
+  .header {
+    padding: 0;
   }
 }

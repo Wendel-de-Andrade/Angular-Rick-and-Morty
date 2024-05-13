@@ -1,9 +1,10 @@
 <div *ngIf="showLayout" class="container">
   <div class="header">
     <app-header></app-header>
+    <button class="menu-icon" (click)="toggleSidebar()">☰</button>
   </div>
   <div class="main-container">
-    <div class="side-bar">
+    <div class="side-bar" [class.open]="sidebarOpen">
       <app-side-bar></app-side-bar>
     </div>
     <div class="main" [class.no-padding-top]="isProfileActive">
@@ -11,6 +12,4 @@
     </div>
   </div>
 </div>
-
-<!-- Este router-outlet é para as páginas que devem ocupar a tela inteira como a página de login -->
 <router-outlet *ngIf="!showLayout"></router-outlet>

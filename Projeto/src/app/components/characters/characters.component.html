@@ -8,6 +8,7 @@
       </div>
     </app-card>
   </div>
+
   <app-modal [isVisible]="isModalOpen" (close)="closeModal()">
     <div class="modal-content">
       <img class="image modal-image" [src]="selectedCharacter?.image" alt="{{ selectedCharacter?.name }}">

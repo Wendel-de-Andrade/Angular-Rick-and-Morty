@@ -1,5 +1,9 @@
 @import "../styles/variables.scss";
 
+.menu-icon {
+  display: none;
+}
+
 .container {
   display: grid;
   grid-template-columns: 350px 1fr;
@@ -40,16 +44,58 @@
   padding-top: 0 !important; // Remove o padding-top quando for o perfil
 }
 
-// @media only screen and (max-width: 1300px) {
-//   .container {
-//     grid-template-columns: 170px 1fr;
-//   }
+@media only screen and (max-width: 1300px) {
+  .container {
+    grid-template-columns: 170px 1fr;
+  }
 
-//   .side-bar {
-//     width: 170px;
-//   }
+  .side-bar {
+    width: 170px;
+  }
 
-//   .main {
-//     padding-Left: 170px;
-//   }
-// }
+  .main {
+    padding-Left: 170px;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    grid-template-columns: auto 1fr;
+  }
+
+  .side-bar {
+    width: 0;
+    overflow: hidden;
+    transition: width 0.3s ease;
+  }
+
+  .side-bar.open {
+    width: 170px;
+  }
+
+  .main {
+    padding-left: 0;
+  }
+
+  .header {
+    left: 0;
+    right: 0;
+  }
+
+  .menu-icon {
+    display: block;
+    position: fixed;
+    top: 18px;
+    left: 10px;
+    z-index: 1010;
+    width: 30px;
+    height: 30px;
+    background-color: $secondary-color;
+    color: $text-color;
+    font-size: 16px;
+    line-height: 30px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+  }
+}
