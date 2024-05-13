@@ -1,6 +1,6 @@
 <div class="container">
-  <div *ngFor="let episode of episodes; trackBy: trackById" (click)="openModal(episode)">
-    <app-card>
+  <div *ngFor="let episode of episodes; trackBy: trackById">
+    <app-card (cardClick)="openModal(episode)">
       <div class="episode-details">
         <h3>{{ episode.name }}</h3>
         <p>Temporada: {{ episode.episode }}</p>
