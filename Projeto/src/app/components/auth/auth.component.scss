@@ -1,9 +1,11 @@
+@import "../../../styles/variables.scss";
+
 .auth-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f8f8f9;
+  background-color: $bg-color;
 
   .back-button {
     position: absolute;
@@ -13,7 +15,12 @@
     background: none;
     cursor: pointer;
     font-size: 16px;
-    color: #6b3f4c;
+    color: $aux-color;
+    transition: all ease 0.2s;
+
+    &:hover {
+      color: darken($aux-color, 10%);
+    }
   }
 
   form {
@@ -45,13 +52,15 @@
       margin-top: 10px;
       border: none;
       border-radius: 5px;
-      color: #ffffff;
-      background-color: #4b3f6b;
+      color: $text-color;
+      background-color: $primary-color;
       cursor: pointer;
       font-size: 16px;
+      font-weight: bold;
+      transition: all ease 0.2s;
 
       &:hover {
-        background-color: darken(#4b3f6b, 10%);
+        background-color: darken($secondary-color, 10%);
       }
     }
   }
